@@ -1,0 +1,5 @@
+.RHistory
+.RData
+results/*
+bin/*
+src/0ld/*

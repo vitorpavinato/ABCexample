@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1566812359540.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "3C86DF51",
+    "lastKnownWriteTime" : 1568038121,
+    "last_content_update" : 1568038121927,
+    "path" : "~/Work/Research/2019.ABC.SLiM/ABCexample/src/ABCwithSLiM.R",
+    "project_path" : "src/ABCwithSLiM.R",
+    "properties" : {
+        "cursorPosition" : "64,0",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

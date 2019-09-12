@@ -1,0 +1,55 @@
+// Generation of the initial state
+// this step can be substituted by a recapitation step for many (but not all) neutral models
+
+
+initialize() {
+
+  // Use SLiMgui to edit and verify your model with some fixed parameter values
+  if (exists("slimgui")){
+    setSeed(1234);
+    defineConstant("N",500);
+    defineConstant("MU",1e-8);
+    defineConstant("BS",0.05);
+    defineConstant("GAMMA_M",-0.03);
+    defineConstant("GAMMA_K",0.2);
+    defineConstant("G", N*100);
+  }
+
+	initializeTreeSeq(checkCoalescence=T);
+
+	initializeMutationRate(MU*BS);
+	initializeMutationType("m1", 0.5, "g", GAMMA_M, GAMMA_K);
+
+	initializeGenomicElementType("g1", m1, 1.0);
+	initializeGenomicElement(g1, 0, 999999);
+
+	initializeRecombinationRate(1e-8);
+}
+1 {
+	sim.addSubpop("p1", N);
+  sim.rescheduleScriptBlock(s1, start=G, end=G);
+  defineConstant("simID", getSeed());
+}
+
+2: late() {
+
+
+	if (sim.treeSeqCoalesced()){
+			catn(sim.generation + ": ALL LOCI COALESCED");
+			catn("Writing file with initial state");
+      sim.outputFull("/tmp/slim_" + simID + ".txt");
+			sim.simulationFinished();
+	}
+
+
+}
+
+
+s1 666 late() {
+  catn("NO COALESCENCE BY GENERATION: " + sim.generation);
+	sim.simulationFinished();
+	// Note: if your simulations get to this point you should 1) verify your
+	// model and 2) consider either adding a recapitation step or increasing G 
+}
+
+
