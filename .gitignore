@@ -1,5 +1,6 @@
-.RHistory
+.Rhistory
 .RData
 results/*
 bin/*
 src/0ld/*
+.Rproj.user/*
